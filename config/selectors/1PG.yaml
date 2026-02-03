@@ -1,0 +1,37 @@
+# 1PG站点 (qat1pg.zhzhse.com) 选择器配置
+# 继承286站点配置，覆盖差异部分
+# 使用前需运行采集脚本确认实际选择器
+
+site_name: "1PG站点"
+site_url: "https://qat1pg.zhzhse.com"
+
+# ============ 差异配置区 ============
+# 1PG站点可能的差异点：
+# - 不同的游戏供应商
+# - 不同的UI主题色
+# - 不同的页面结构
+
+# 底部导航
+# nav:
+#   texts:
+#     deposit: "存款"
+
+# 存款页面
+# deposit:
+#   entry_top: ".recharge-btn"
+
+# 体育入口（1PG可能有不同的体育供应商）
+# sports:
+#   entry_keywords:
+#     - "1PG体育"
+#     - "体育"
+#     - "Sports"
+
+# 首页游戏区域（可能class名不同）
+# home:
+#   play_item: ".game-card"
+#   play_name: ".game-title"
+
+# ============ 待采集确认 ============
+# 运行以下命令采集该站点:
+# python tools/auto_crawler.py --site 1PG

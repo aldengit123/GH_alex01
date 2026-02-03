@@ -1,0 +1,85 @@
+# UI自动化测试配置文件
+
+# 站点配置（支持多站点）
+sites:
+  "286":
+    name: "286站点"
+    base_url: "https://qatwk.zhzhse.com"
+    login_url: "https://qatwk.zhzhse.com"
+  "231":
+    name: "231站点"
+    base_url: "https://qat266.zhzhse.com"
+    login_url: "https://qat266.zhzhse.com"
+  "1PG":
+    name: "1PG站点"
+    base_url: "https://qat1pg.zhzhse.com"
+    login_url: "https://qat1pg.zhzhse.com"
+  "g66":
+    name: "g66站点"
+    base_url: "https://qat196.zhzhse.com"
+    login_url: "https://qat196.zhzhse.com"
+
+# 当前使用的站点（可切换）
+current_site: "286"
+
+# 应用配置（保留作为默认值）
+app:
+  base_url: "https://qatwk.zhzhse.com"
+  login_url: "https://qatwk.zhzhse.com"
+  success_url_keywords:
+    - "lobby"
+    - "home"
+    - "dashboard"
+
+# 账号配置
+account:
+  username: "honer001"
+  password: "aa123123"
+
+# 浏览器配置
+browser:
+  headless: false
+  mobile_emulation: true
+  device_width: 375
+  device_height: 812
+  pixel_ratio: 3.0
+  user_agent: "Mozilla/5.0 (iPhone; CPU iPhone OS 16_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.2 Mobile/15E148 Safari/604.1"
+  
+# 登录配置
+login:
+  timeout: 300  # 等待手动登录的超时时间（秒）
+  check_interval: 2  # 检查登录状态的间隔（秒）
+  
+  # 登录页面元素选择器
+  selectors:
+    close_popup: "button[class*='close'], [class*='close']"
+    login_button: ".login-btn, text=登录"
+    username_input: "input[type='text']"
+    password_input: "input[type='password']"
+    submit_button: ".new-submit-button"
+    captcha_element: "[class*='botion_captcha'], [class*='captcha']"
+
+# 缓存配置
+cache:
+  enabled: true
+  expire_hours: 24  # 缓存过期时间（小时）
+  session_name: "default_user"
+  cache_dir: "./cache/user_session"
+
+# Token配置
+token:
+  storage_keys:  # localStorage中可能存储token的key
+    - "token"
+    - "auth_token"
+    - "access_token"
+    - "userToken"
+  cookie_names:  # cookie中可能存储token的名称
+    - "token"
+    - "session"
+    - "sessionId"
+
+# 日志配置
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  log_dir: "./logs"

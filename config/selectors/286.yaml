@@ -1,0 +1,117 @@
+# 286站点 (qatwk.zhzhse.com) 选择器配置
+# 基于自动采集数据更新 - 2026-02-02
+
+site_name: "286站点"
+site_url: "https://qatwk.zhzhse.com"
+
+# ============ 底部导航 ============
+# 5个tab: 首页(0) | 赚钱(1) | 活动(2) | 存款(3) | 我的(4)
+nav:
+  items: ".item"
+  active: ".item.active"
+  # 各导航项索引（从0开始）
+  index:
+    home: 0
+    earn: 1
+    activity: 2
+    deposit: 3
+    mine: 4
+  # 各导航项文字
+  texts:
+    home: "首页"
+    earn: "赚钱"
+    activity: "活动"
+    deposit: "存款"  # 实际显示"送3% 存款"
+    mine: "我的"
+
+# ============ 首页元素 ============
+home:
+  balance: ".wallet-balance"
+  deposit_btn: ".recharge-btn"
+  deposit_wrapper: ".recharge-btn-wrapper"
+  service_btn: ".service-btn"
+  download_btn: ".download-btn"
+  game_category: ".game-cate-bar-wrapper"
+  game_item: ".game"
+  play_item: ".helf"
+  play_name: ".play-name"
+
+# ============ 存款页面 ============
+deposit:
+  # 入口方式1: 首页顶部按钮
+  entry_top: ".recharge-btn"
+  entry_wrapper: ".recharge-btn-wrapper"
+  # 入口方式2: 底部导航
+  nav_index: 3
+  nav_text: "存款"
+  # 页面URL特征
+  url_keywords:
+    - "walletCounter"
+    - "RECHARGE"
+    - "deposit"
+    - "counter"
+  # 页面头部
+  page_header: ".navigation-header"
+
+# ============ 代理中心 ============
+# 在"我的"页面中查找，URL: /mine
+agent:
+  # 先进入我的页面
+  mine_nav_index: 4
+  mine_nav_text: "我的"
+  mine_url: "/mine"
+  # 代理入口关键词
+  entry_keywords:
+    - "代理"
+    - "推广"
+    - "邀请"
+    - "合营"
+    - "分享"
+
+# ============ 体育页面 ============
+sports:
+  # 首页游戏入口
+  game_container: ".helf"
+  game_name: ".play-name"
+  # 体育关键词（go体育可以投注）
+  entry_keywords:
+    - "go体育"
+    - "GO体育"
+    - "熊猫体育"
+    - "体育"
+    - "Sports"
+
+# ============ 活动/赚钱页面 ============
+activity:
+  # 活动 - 底部导航
+  activity_nav_index: 2
+  activity_nav_text: "活动"
+  # 赚钱 - 底部导航  
+  earn_nav_index: 1
+  earn_nav_text: "赚钱"
+  # 通用
+  nav_item: ".item"
+
+# ============ 我的页面 ============
+mine:
+  nav_index: 4
+  nav_text: "我的"
+  url: "/mine"
+  # 我的页面头部信息
+  header: ".index-header"
+  username: "honer001"  # 测试账号
+  balance_text: "我的余额"
+
+# ============ 通用元素 ============
+common:
+  # 关闭按钮
+  close_btn: ".close-btn"
+  # 下载条
+  download_wrap: ".download-btn-1pg-wrap"
+  download_btn: ".download-btn-1pg"
+  tutorial_btn: ".open-tutorial-btn"
+  # 底部导航项
+  nav_item: ".item"
+  nav_item_active: ".item.active"
+  # 页面头部
+  page_header: ".navigation-header"

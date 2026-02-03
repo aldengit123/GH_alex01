@@ -1,0 +1,36 @@
+# g66站点 (qat196.zhzhse.com) 选择器配置
+# 继承286站点配置，覆盖差异部分
+# 使用前需运行采集脚本确认实际选择器
+
+site_name: "g66站点"
+site_url: "https://qat196.zhzhse.com"
+
+# ============ 差异配置区 ============
+# g66站点可能的差异点：
+# - 不同的品牌名称
+# - 不同的活动配置
+# - 不同的游戏列表
+
+# 底部导航
+# nav:
+#   texts:
+#     deposit: "存款"
+
+# 存款页面
+# deposit:
+#   entry_top: ".recharge-btn"
+
+# 体育入口
+# sports:
+#   entry_keywords:
+#     - "沙巴体育"
+#     - "体育"
+
+# 活动页面（可能有不同的活动结构）
+# activity:
+#   activity_list: ".promo-list"
+#   activity_item: ".promo-card"
+
+# ============ 待采集确认 ============
+# 运行以下命令采集该站点:
+# python tools/auto_crawler.py --site g66

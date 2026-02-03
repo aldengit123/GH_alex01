@@ -1,0 +1,121 @@
+# 默认选择器配置
+# 适用于大部分站点，各站点可覆盖特定选择器
+
+# 存款页面选择器
+deposit:
+  # 导航入口
+  entry: "[class*='deposit'], [class*='recharge'], a[href*='deposit'], [class*='充值']"
+  nav_text: "存款,充值,Deposit,入金"
+  
+  # 页面元素
+  amount_input: "input[type='number'], input[type='text'][class*='amount'], input[placeholder*='金额']"
+  payment_methods: "[class*='payment'], [class*='channel'], [class*='method']"
+  submit_btn: "button[class*='submit'], button[class*='confirm'], [class*='确认']"
+  
+  # 快捷金额
+  quick_amount: "[class*='quick'], [class*='fast'], [class*='preset']"
+  
+  # 页面标识
+  page_keywords:
+    - "deposit"
+    - "recharge"
+    - "payment"
+
+# 代理中心选择器
+agent:
+  # 导航入口
+  entry: "[class*='agent'], [class*='proxy'], a[href*='agent'], [class*='推广']"
+  nav_text: "代理,代理中心,Agent,推广,合营"
+  
+  # 页面元素
+  agent_code: "[class*='code'], [class*='invite'], [class*='邀请码']"
+  agent_link: "[class*='link'], [class*='share'], input[readonly]"
+  commission_info: "[class*='commission'], [class*='bonus'], [class*='佣金']"
+  team_info: "[class*='team'], [class*='member'], [class*='下级']"
+  
+  # 页面标识
+  page_keywords:
+    - "agent"
+    - "proxy"
+    - "promote"
+    - "affiliate"
+
+# 体育页面选择器
+sports:
+  # 导航入口
+  entry: "[class*='sport'], [class*='tiyu'], a[href*='sport']"
+  nav_text: "体育,Sports,竞技,球类"
+  
+  # 赛事列表
+  match_list: "[class*='match'], [class*='game'], [class*='event'], [class*='league']"
+  match_item: "[class*='match-item'], [class*='game-item'], [class*='event-item']"
+  
+  # 赔率/下注
+  odds_item: "[class*='odds'], [class*='rate'], [class*='odd']"
+  bet_option: "[class*='bet-option'], [class*='selection'], [class*='pick']"
+  
+  # 投注单
+  bet_slip: "[class*='bet-slip'], [class*='betslip'], [class*='ticket']"
+  stake_input: "input[class*='stake'], input[class*='amount'], input[type='number']"
+  place_bet_btn: "button[class*='place'], button[class*='confirm'], button[class*='bet']"
+  
+  # 余额
+  balance: "[class*='balance'], [class*='money'], [class*='wallet']"
+  
+  # 页面标识
+  page_keywords:
+    - "sport"
+    - "game"
+    - "bet"
+
+# 活动/赚钱页面选择器
+activity:
+  # 导航入口 - 活动
+  activity_entry: "[class*='activity'], [class*='promo'], a[href*='activity']"
+  activity_nav_text: "活动,优惠,促销,Activity,Promo,红利"
+  
+  # 导航入口 - 赚钱
+  earn_entry: "[class*='earn'], [class*='money'], a[href*='earn'], [class*='任务']"
+  earn_nav_text: "赚钱,福利,返利,Earn,任务"
+  
+  # 活动列表
+  activity_list: "[class*='activity-list'], [class*='promo-list'], [class*='list']"
+  activity_item: "[class*='activity-item'], [class*='promo-item'], [class*='card']"
+  
+  # 活动详情
+  activity_title: "[class*='title'], h1, h2, [class*='name']"
+  activity_content: "[class*='content'], [class*='detail'], [class*='desc']"
+  activity_rule: "[class*='rule'], [class*='terms'], [class*='条款']"
+  claim_btn: "button[class*='claim'], button[class*='apply'], button[class*='领取']"
+  
+  # 赚钱页面
+  task_list: "[class*='task'], [class*='mission'], [class*='任务']"
+  reward_info: "[class*='reward'], [class*='bonus'], [class*='奖励']"
+  
+  # 页面标识
+  activity_keywords:
+    - "activity"
+    - "promo"
+    - "bonus"
+  earn_keywords:
+    - "earn"
+    - "task"
+    - "mission"
+
+# 通用选择器
+common:
+  # 关闭按钮（弹窗等）
+  close_btn: "[class*='close'], [class*='cancel'], .close, .icon-close"
+  
+  # 返回按钮
+  back_btn: "[class*='back'], [class*='return'], .back"
+  
+  # 加载指示器
+  loading: "[class*='loading'], [class*='spinner'], .loading"
+  
+  # Toast/提示
+  toast: "[class*='toast'], [class*='message'], [class*='tip']"
+  
+  # 底部导航
+  bottom_nav: "[class*='nav'], [class*='footer'], [class*='tabbar']"
+  nav_item: "[class*='nav-item'], [class*='tab-item']"

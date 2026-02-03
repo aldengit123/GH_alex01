@@ -1,0 +1,64 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# 调试文件
+debug_*.jpg
+debug_*.png
+screenshots/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 测试
+.pytest_cache/
+.coverage
+htmlcov/
+
+# 日志
+*.log
+
+# 配置文件（可能包含敏感信息）
+config.json
+credentials.json
+
+# Cookies
+cookies.pkl
+
+# 缓存目录（包含登录会话）
+cache/
+*.json
+
+# 截图
+*.png
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db

@@ -1,0 +1,38 @@
+# 231站点 (qat266.zhzhse.com) 选择器配置
+# 继承286站点配置，覆盖差异部分
+# 使用前需运行采集脚本确认实际选择器
+
+site_name: "231站点"
+site_url: "https://qat266.zhzhse.com"
+
+# ============ 差异配置区 ============
+# 如果该站点与286有差异，在下面覆盖
+
+# 底部导航（如果文字或索引不同，取消注释并修改）
+# nav:
+#   texts:
+#     deposit: "充值"  # 如果存款按钮文字不同
+#   index:
+#     deposit: 3
+
+# 存款页面（如果入口选择器不同）
+# deposit:
+#   entry_top: ".deposit-btn"  # 如果class名不同
+#   url_keywords:
+#     - "deposit"
+
+# 体育入口（如果游戏名称不同）
+# sports:
+#   entry_keywords:
+#     - "IM体育"  # 如果体育供应商不同
+#     - "体育"
+
+# 代理入口（如果关键词不同）
+# agent:
+#   entry_keywords:
+#     - "代理"
+#     - "推广"
+
+# ============ 待采集确认 ============
+# 运行以下命令采集该站点:
+# python tools/auto_crawler.py --site 231
