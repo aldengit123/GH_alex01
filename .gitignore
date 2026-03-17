@@ -31,6 +31,7 @@ screenshots/
 # IDE
 .vscode/
 .idea/
+.claude/
 *.swp
 *.swo
 *~
@@ -41,9 +42,11 @@ screenshots/
 htmlcov/
 
 # 日志
+logs/
 *.log
 
 # 配置文件（可能包含敏感信息）
+config/config.yaml
 config.json
 credentials.json
 
@@ -54,8 +57,14 @@ cookies.pkl
 cache/
 *.json
 
+# 输出目录
+output/
+
 # 截图
 *.png
+
+# 压缩包
+*.zip
 
 # macOS
 .DS_Store

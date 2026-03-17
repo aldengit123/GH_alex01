@@ -3,7 +3,15 @@
 # 核心依赖
 selenium==4.15.2
 webdriver-manager==4.0.1
-PyYAML==6.0.1# 测试框架
+PyYAML==6.0.1
+
+# 测试框架
 pytest==7.4.3
-pytest-html==3.2.0# 可选：Playwright支持
+pytest-html==3.2.0
+
+# 验证码自动识别
+AntiCAP>=3.3.5
+ddddocr>=1.5.6
+
+# 可选：Playwright支持
 # playwright==1.57.0

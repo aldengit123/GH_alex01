@@ -13,6 +13,7 @@ from ..utils.config_loader import config
 from ..utils.logger import get_logger
 from ..utils.constants import CacheStatus, MANUAL_LOGIN_TIMEOUT
 from .login_page import LoginPage
+from .captcha_solver import CaptchaSolver
 
 
 class LoginHandler:
@@ -111,11 +112,11 @@ class LoginHandler:
                 self.logger.info("✅ 浏览器已是登录状态，跳过验证码")
             elif login_result:
                 # 正常完成登录步骤，检查是否需要验证码
-                # 2.4 等待人工处理验证码
+                # 2.4 处理验证码
                 if self.login_page.is_captcha_present():
-                    self.logger.info("\n🧩 检测到验证码，等待人工处理...")
-                    if not self._wait_for_manual_verification():
-                        self.logger.error("❌ 验证码处理超时或失败")
+                    captcha_solved = self._handle_captcha()
+                    if not captcha_solved:
+                        self.logger.error("❌ 验证码处理失败")
                         return None
                 
                 # 2.5 验证登录结果
@@ -261,6 +262,29 @@ class LoginHandler:
         
         self.logger.info("✓ 自动化步骤完成\n")
         return True
+    
+    def _handle_captcha(self) -> bool:
+        """
+        处理验证码
+        优先尝试自动处理，失败则回退到手动处理
+        """
+        auto_captcha = config.get("login.auto_captcha", True)
+        
+        if auto_captcha:
+            self.logger.info("\n🤖 尝试自动处理验证码...")
+            try:
+                solver = CaptchaSolver(self.driver)
+                if solver.solve_slider_captcha():
+                    self.logger.info("✅ 验证码自动处理成功")
+                    return True
+                else:
+                    self.logger.warning("⚠️ 自动处理失败，切换到手动模式")
+            except Exception as e:
+                self.logger.warning(f"⚠️ 自动处理出错: {e}，切换到手动模式")
+        
+        # 回退到手动处理
+        self.logger.info("\n🧩 检测到验证码，等待人工处理...")
+        return self._wait_for_manual_verification()
     
     def _wait_for_manual_verification(self) -> bool:
         """等待人工处理验证码"""

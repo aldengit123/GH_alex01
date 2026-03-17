@@ -1,5 +1,6 @@
 # 登录模块
 from .login_handler import LoginHandler
 from .login_page import LoginPage
+from .captcha_solver import CaptchaSolver
 
-__all__ = ['LoginHandler', 'LoginPage']
+__all__ = ['LoginHandler', 'LoginPage', 'CaptchaSolver']
