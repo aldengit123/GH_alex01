@@ -31,21 +31,21 @@ class BrowserManager:
         self._chromedriver_path = self._find_chromedriver()
     
     def _find_chromedriver(self) -> Optional[str]:
-        """查找chromedriver路径"""
-        # 常见路径
-        possible_paths = [
-            '/Users/lank/.wdm/drivers/chromedriver/mac64/143.0.7499.192/chromedriver-mac-arm64/chromedriver',
-            '/usr/local/bin/chromedriver',
-            '/opt/homebrew/bin/chromedriver',
-        ]
-        
-        for path in possible_paths:
-            if os.path.exists(path):
-                self.logger.debug(f"找到chromedriver: {path}")
-                return path
-        
-        self.logger.debug("使用webdriver-manager自动管理chromedriver")
-        return None
+        """使用webdriver-manager自动获取匹配当前Chrome版本的chromedriver"""
+        try:
+            from webdriver_manager.chrome import ChromeDriverManager
+            path = ChromeDriverManager().install()
+            # webdriver-manager 某些版本会返回非二进制文件的路径，需要修正为同目录下的 chromedriver
+            if os.path.basename(path) != 'chromedriver':
+                parent = os.path.dirname(path)
+                candidate = os.path.join(parent, 'chromedriver')
+                if os.path.exists(candidate):
+                    path = candidate
+            self.logger.debug(f"chromedriver: {path}")
+            return path
+        except Exception as e:
+            self.logger.debug(f"webdriver-manager获取失败({e})，使用Selenium内置管理")
+            return None
     
     def create_driver(
         self,
