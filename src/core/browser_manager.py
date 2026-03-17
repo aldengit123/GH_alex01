@@ -34,15 +34,33 @@ class BrowserManager:
         """使用webdriver-manager自动获取匹配当前Chrome版本的chromedriver"""
         try:
             from webdriver_manager.chrome import ChromeDriverManager
-            path = ChromeDriverManager().install()
-            # webdriver-manager 某些版本会返回非二进制文件的路径，需要修正为同目录下的 chromedriver
-            if os.path.basename(path) != 'chromedriver':
-                parent = os.path.dirname(path)
-                candidate = os.path.join(parent, 'chromedriver')
-                if os.path.exists(candidate):
-                    path = candidate
-            self.logger.debug(f"chromedriver: {path}")
-            return path
+            raw_path = ChromeDriverManager().install()
+            parent = os.path.dirname(raw_path)
+
+            # webdriver-manager 某些版本会返回 THIRD_PARTY_NOTICES 等非可执行文件
+            # 这里按平台优先挑选真正的驱动二进制
+            candidates = []
+            if os.name == 'nt':
+                candidates = [
+                    raw_path,
+                    os.path.join(parent, 'chromedriver.exe'),
+                    os.path.join(parent, 'chromedriver'),
+                ]
+            else:
+                candidates = [
+                    raw_path,
+                    os.path.join(parent, 'chromedriver'),
+                ]
+
+            for candidate in candidates:
+                if os.path.isfile(candidate):
+                    name = os.path.basename(candidate).lower()
+                    if name.startswith('chromedriver'):
+                        self.logger.debug(f"chromedriver: {candidate}")
+                        return candidate
+
+            self.logger.warning(f"未找到有效的chromedriver可执行文件，webdriver-manager返回: {raw_path}")
+            return None
         except Exception as e:
             self.logger.debug(f"webdriver-manager获取失败({e})，使用Selenium内置管理")
             return None
@@ -113,7 +131,8 @@ class BrowserManager:
         # 创建WebDriver
         try:
             if self._chromedriver_path:
-                os.chmod(self._chromedriver_path, 0o755)
+                if os.name != 'nt':
+                    os.chmod(self._chromedriver_path, 0o755)
                 service = Service(self._chromedriver_path)
                 self.driver = webdriver.Chrome(service=service, options=options)
             else:
